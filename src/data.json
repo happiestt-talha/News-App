@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import NewsItem from './NewsItem'
-
-export class News extends Component {
-    articles = [
+{
+    "status": "ok",
+    "totalResults": 5483,
+    "articles": [
         {
             "source": {
                 "id": null,
@@ -1304,26 +1303,4 @@ export class News extends Component {
             "content": "Naresh Singh Shekhawat runs a grocery store NMart in one of the upscale condominiums of Gurgaon. He hadrelocated from his home state of Rajasthan to the National Capital Region (NCR) in search of a f… [+6893 chars]"
         }
     ]
-    constructor() {
-        super();
-        this.state = {
-            data: this.articles
-        }
-    }
-    render() {
-
-        return (
-            <div className='container'>
-                <div className="row my-3 d-flex justify-content-between">
-                    {this.state.data.map((data) => {
-                        return <div className="col-md-3" key={data.url}>
-                            <NewsItem title={data.title} description={data.description} url={data.url} urlToImage={data.urlToImage} />
-                        </div>
-                    })}
-                </div>
-
-            </div>
-        )
-    }
 }
-export default News
