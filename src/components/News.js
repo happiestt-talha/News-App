@@ -5,15 +5,42 @@ export class News extends Component {
     constructor() {
         super();
         this.state = {
-            articles: []
+            articles: [],
+            page: 1
         }
     }
     async componentDidMount() {
-        console.log('cdm');
-        let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0dd418eda768429cba391f6cab5450d9";
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page}&pageSize=10`;
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles });
+        this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults,
+            page: this.state.page + 1
+        });
+    }
+
+    handleNextPage = async () => {
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page + 1}&pageSize=10`;
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults,
+            page: this.state.page + 1
+        });
+
+    }
+    handlePrevPage = async () => {
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page - 1}&pageSize=10`;
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults,
+            page: this.state.page - 1
+        });
+
     }
     render() {
 
@@ -27,6 +54,10 @@ export class News extends Component {
                     })}
                 </div>
 
+                <div className='container d-flex justify-content-between'>
+                    <button onClick={this.handleNextPage} disabled={this.state.page <= 1} type="button" class="btn btn-dark">&larr; Previous</button>
+                    <button onClick={this.handlePrevPage} type="button" class="btn btn-dark">Next &rarr;</button>
+                </div>
             </div>
         )
     }
