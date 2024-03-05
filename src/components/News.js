@@ -12,7 +12,7 @@ export class News extends Component {
         }
     }
     async componentDidMount() {
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page}&pageSize=3`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         let data = await fetch(url);
         let parsedData = await data.json();
         this.setState({
@@ -24,7 +24,7 @@ export class News extends Component {
 
     handleNextPage = async () => {
 
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page + 1}&pageSize=3`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page + 1}&pageSize=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true })
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -38,7 +38,7 @@ export class News extends Component {
 
     }
     handlePrevPage = async () => {
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page - 1}&pageSize=3`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=0dd418eda768429cba391f6cab5450d9&page=${this.state.page - 1}&pageSize=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true })
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -57,7 +57,7 @@ export class News extends Component {
                 <h1>Top Headlines</h1>
                 {this.state.loading && <Loader />}
                 <div className="row my-3 d-flex justify-content-between">
-                    {this.state.articles.map((data) => {
+                    {!this.state.loading && this.state.articles.map((data) => {
                         return <div className="col-md-3" key={data.url}>
                             <NewsItem title={data.title} description={data.description} url={data.url} urlToImage={data.urlToImage} />
                         </div>
