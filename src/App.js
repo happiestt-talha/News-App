@@ -11,13 +11,13 @@ export default class App extends Component {
         <NavBar />
         <Routes>
           {/* <switch> */}
-          <Route path='/' element={<News key={"general"} pageSize={6} category="general" />} />
-          <Route path='/technology' element={<News key={"technology"} pageSize={6} category="technology" />} />
-          <Route path='/business' element={<News key={"business"} pageSize={6} category="business" />} />
-          <Route path='/health' element={<News key={"health"} pageSize={6} category="health" />} />
-          <Route path='/entertainment' element={<News key={"entertainment"} pageSize={6} category="entertainment" />} />
-          <Route path='/science' element={<News key={"science"} pageSize={6} category="science" />} />
-          <Route path='/sports' element={<News key={"sports"} pageSize={6} category="sports" />} />
+          <Route path='/' element={<News key={"general"} pageSize={8} category="general" />} />
+          <Route path='/technology' element={<News key={"technology"} pageSize={8} category="technology" />} />
+          <Route path='/business' element={<News key={"business"} pageSize={8} category="business" />} />
+          <Route path='/health' element={<News key={"health"} pageSize={8} category="health" />} />
+          <Route path='/entertainment' element={<News key={"entertainment"} pageSize={8} category="entertainment" />} />
+          <Route path='/science' element={<News key={"science"} pageSize={8} category="science" />} />
+          <Route path='/sports' element={<News key={"sports"} pageSize={8} category="sports" />} />
           {/* </switch> */}
         </Routes >
 

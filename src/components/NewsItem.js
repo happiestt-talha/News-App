@@ -7,7 +7,7 @@ export class NewsItem extends Component {
         const imageSource = urlToImage ? urlToImage : "https://cdn.abcotvs.com/dip/images/994847_092115-abcnewslivestreams-img.jpg";
         return (
             <div>
-                <div className="card mb-2" style={{ width: "18rem" }}>
+                <div className="card mb-2" >
                     <img onError={(e) => { e.target.src = imageSource }} src={!urlToImage ? "https://cdn.abcotvs.com/dip/images/994847_092115-abcnewslivestreams-img.jpg" : urlToImage} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{title && title.slice(0, 45)}...</h5>
