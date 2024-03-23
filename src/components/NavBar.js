@@ -15,9 +15,9 @@ export class NavBar extends Component {
                             <ul className="navbar-nav">
                                 {
                                     navItem.map((e)=>{
-                                       return <li className="nav-item">
-                                                 <Link className="nav-link text-capitalize" to={`/${e}`}>{e}</Link>
-                                              </li>
+                                        return  <li key={e} className="nav-item">
+                                                    <Link className="nav-link text-capitalize" to={`/${e}`}>{e}</Link>
+                                                </li>
                                     })
                                 }
                             </ul>
