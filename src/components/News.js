@@ -76,7 +76,7 @@ export class News extends Component {
                     })}
                 </div> */}
                 <InfiniteScroll
-                    dataLength={56} //This is important field to render the next data
+                    dataLength={this.state.articles.length} //This is important field to render the next data
                     next={this.fetchData()}
                     hasMore={true}
                     loader={<Loader/>}
@@ -88,7 +88,7 @@ export class News extends Component {
                     
                 >
                 <div className="row my-3 d-flex justify-content-between">
-                    {!this.state.loading && this.state.articles.map((data) => {
+                    {this.state.articles.map((data) => {
                         return <div className="col-md-3" key={data.url}>
                             <NewsItem title={data.title} description={data.description} url={data.url} urlToImage={data.urlToImage} />
                         </div>
