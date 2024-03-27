@@ -78,7 +78,7 @@ export class News extends Component {
                 <InfiniteScroll
                     dataLength={this.state.articles.length} //This is important field to render the next data
                     next={this.fetchData()}
-                    hasMore={true}
+                    hasMore={this.state.articles.length!==this.state.totalResults}
                     loader={<Loader/>}
                     endMessage={
                         <p style={{ textAlign: 'center' }}>
